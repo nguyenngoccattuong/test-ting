@@ -19,7 +19,7 @@ type Kol struct {
 	RewardID             int64     `json:"rewardID" gorm:"column:RewardID"`
 	PaymentMethodID      int64     `json:"paymentMethodID" gorm:"column:PaymentMethodID"`
 	TestimonialsID       int64     `json:"testimonialsID" gorm:"column:TestimonialsID"`
-	VerificationStatus   bool      `json:"verificationStatus" gorm:"column:VerificationStatus"`
+	VerificationStatus   string    `json:"verificationStatus" gorm:"column:VerificationStatus"`
 	Enabled              bool      `json:"enabled" gorm:"column:Enabled"`
 	ActiveDate           time.Time `json:"activeDate" gorm:"column:ActiveDate"`
 	Active               bool      `json:"active" gorm:"column:Active"`
@@ -32,7 +32,7 @@ type Kol struct {
 	Code                 string    `json:"code" gorm:"column:Code"`
 	PortraitRightURL     string    `json:"portraitRightURL" gorm:"column:PortraitRightURL"`
 	PortraitLeftURL      string    `json:"portraitLeftURL" gorm:"column:PortraitLeftURL"`
-	LivenessStatus       bool      `json:"livenessStatus" gorm:"column:LivenessStatus"`
+	LivenessStatus       string    `json:"livenessStatus" gorm:"column:LivenessStatus"`
 }
 
 func (Kol) TableName() string {

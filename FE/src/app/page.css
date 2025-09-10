@@ -1,11 +1,367 @@
 
-/* 
-    This is the CSS file for the page component. 
-    It contains the styles for the header of the page.
-*/
-.header { 
-    background-color: #333;
-    color: white;
-    padding: 1em;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #2d3748;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  
+  .header {
     text-align: center;
-}
+    color: white;
+    margin-bottom: 20px;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .kol-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .scroll-btn {
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 140px;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scroll-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .scroll-btn:hover::before {
+    left: 100%;
+  }
+  
+  .scroll-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+  }
+  
+  .scroll-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+  }
+  
+  .scroll-btn:disabled {
+    background: #e2e8f0;
+    color: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .kol-list {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+  
+  .kol-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 350px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .kol-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  }
+  
+  .kol-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+  
+  .kol-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f7fafc;
+  }
+  
+  .kol-code {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  
+  .status-badge {
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .status-badge.verified {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+  }
+  
+  .status-badge.pending {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    color: white;
+  }
+  
+  .status-badge.rejected {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+    color: white;
+  }
+  
+  .kol-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-radius: 8px;
+    /* Đã xóa transition và hover effect */
+  }
+  
+  .label {
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
+  
+  .value {
+    color: #2d3748;
+    font-weight: 500;
+    text-align: right;
+    flex: 1;
+  }
+  
+  .liveness-badge, .onboarding-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .liveness-badge.passed {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+  }
+  
+  .liveness-badge.failed {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+    color: white;
+  }
+  
+  .liveness-badge.pending {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    color: white;
+  }
+  
+  .onboarding-badge.completed {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: white;
+  }
+  
+  .onboarding-badge.pending {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+    color: white;
+  }
+  
+  .pagination-info {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 16px 32px;
+    border-radius: 50px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+  }
+  
+  /* Loading and Error States */
+  .loading-container, .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 60px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .kol-container {
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px;
+    }
+    
+    .scroll-btn {
+      width: 100%;
+      max-width: 200px;
+    }
+    
+    .kol-list {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .kol-card {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px 15px;
+    }
+    
+    .header {
+      font-size: 2.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      padding: 10px 20px;
+    }
+    
+    .kol-container {
+      padding: 20px;
+    }
+    
+    .kol-card {
+      padding: 20px;
+    }
+    
+    .info-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    
+    .value {
+      text-align: left;
+    }
+  }
+  
+  /* Animation for card entrance */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .kol-card {
+    animation: slideInUp 0.6s ease-out;
+  }
+  
+  .kol-card:nth-child(1) { animation-delay: 0.1s; }
+  .kol-card:nth-child(2) { animation-delay: 0.2s; }
+  .kol-card:nth-child(3) { animation-delay: 0.3s; }
